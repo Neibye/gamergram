@@ -10,6 +10,7 @@ import {
 } from "@remix-run/react";
 import { initializeApp } from "firebase/app";
 import "firebase/auth";
+import styles from "./styles/app.css";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -23,7 +24,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  {
+    rel: "stylesheet",
+    href: styles,
+  },
 ];
 
 export default function App() {
